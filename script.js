@@ -66,56 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
             notification.classList.add('d-none');
         }, 2000);
     }
-
-    appointmentForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        const name = document.getElementById('appointmentName').value.trim();
-        const phone = document.getElementById('appointmentPhone').value.trim();
-        const doctor = document.getElementById('appointmentDoctor').value;
-        const service = document.getElementById('appointmentService').value;
-        const date = document.getElementById('appointmentDate').value;
-
-        if (!name) {
-            showNotification('Пожалуйста, введите ваше имя.', 'danger');
-            return;
-        }
-
-        const phonePattern = /^\+?\d{10,15}$/;
-        if (!phonePattern.test(phone)) {
-            showNotification('Введите корректный номер телефона.', 'danger');
-            return;
-        }
-
-        if (!doctor) {
-            showNotification('Пожалуйста, выберите врача.', 'danger');
-            return;
-        }
-
-        if (!service) {
-            showNotification('Пожалуйста, выберите услугу.', 'danger');
-            return;
-        }
-
-        if (!date) {
-            showNotification('Пожалуйста, выберите дату.', 'danger');
-            return;
-        }
-
-        const selectedDate = new Date(date);
-        const todayDate = new Date();
-        todayDate.setHours(0, 0, 0, 0);
-
-        if (selectedDate < todayDate) {
-            showNotification('Пожалуйста, выберите сегодняшнюю или будущую дату.', 'danger');
-            return;
-        }
-
-        showNotification('Вы успешно записались на прием!', 'success');
-        
-
-        appointmentForm.reset();
-    });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -131,28 +81,6 @@ document.addEventListener('DOMContentLoaded', function () {
             notification.classList.add('d-none');
         }, 2000);
     }
-
-    loginForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        const email = document.getElementById('loginEmail').value.trim();
-        const password = document.getElementById('loginPassword').value.trim();
-
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-            showNotification('Введите корректный email.', 'danger');
-            return;
-        }
-
-        if (password.length < 8) {
-            showNotification('Пароль должен содержать минимум 8 символов.', 'danger');
-            return;
-        }
-
-        showNotification('Вы успешно вошли!', 'success');
-
-        loginForm.reset();
-    });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -299,7 +227,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const password = document.getElementById('loginPassword').value;
 
     try {
-        const response = await fetch('http://localhost:3000/api/login', {
+        const response = await fetch('http://localhost:3000/api/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -319,6 +247,41 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         }
     } catch (error) {
         console.error('Ошибка:', error);
+        alert('Произошла ошибка при отправке данных.');
+    }
+});
+
+document.getElementById('appointmentForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('appointmentName').value;
+    const phone = document.getElementById('appointmentPhone').value;
+    const doctor = document.getElementById('appointmentDoctor').value;
+    const service = document.getElementById('appointmentService').value;
+    const date = document.getElementById('date').value;
+
+    try {
+        const response = await fetch('http://localhost:3000/api/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name, phone, doctor, service, date }),
+        });
+
+        const result = await response.json();
+
+        const notification = document.getElementById('notification');
+        if (response.ok) {
+            notification.className = 'alert alert-success d-block mb-3';
+            notification.textContent = result.message;
+        } else {
+            notification.className = 'alert alert-danger d-block mb-3';
+            notification.textContent = result.error || 'Ошибка регистрации на прием.';
+        }
+    } catch (error) {
+        console.error('Ошибка:', error);
+        console.log('Отправляемые данные:', { name, phone, email, password });
         alert('Произошла ошибка при отправке данных.');
     }
 });
