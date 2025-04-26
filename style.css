@@ -1,0 +1,92 @@
+@font-face{
+    font-family: "Champagne Royale";
+    src: url(fonts\ChampagneRoyale.ttf);}
+
+/* @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"); */
+
+body{
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 90px;
+}
+
+footer{
+    position: absolute;
+    /* bottom: 0; */
+    width: 100%;
+}
+
+h1{
+    font-family: "Champagne Royale";
+}
+
+.img{
+    width: 100%;
+    border: 2px green solid;
+}
+
+.img:hover{
+    width: 100%;
+    border: 2px blue solid;
+}
+
+
+
+.lenta{
+    width: fit-content;
+}
+
+.banner-img{
+    height: 35vh;
+    object-fit: cover;
+}
+
+.width-fit-content{
+    width: fit-content;
+}
+
+@media(max-width: 1024px){
+    .img{
+        width: 50%;
+        border: 2px green solid;
+    }
+}
+
+.light-theme {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.dark-theme {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+}
+
+.dark-theme {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+}
+
+.no-theme-change {
+    fill: #000000 !important;
+}
+
+.light-theme header i,
+.dark-theme header i {
+    color: inherit;
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 90px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.9s ease, color 0.9s ease;
+}
+
