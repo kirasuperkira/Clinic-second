@@ -10,7 +10,7 @@ app.use (cors());
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabasekey = process.env.SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabase = createClient(supabaseUrl, supabasekey);
 
 app.post( '/api/register', async (req, res) => {
     console.log('Полученные данные:', req.body);
@@ -35,4 +35,9 @@ app.post( '/api/register', async (req, res) => {
         console.error('Ошибка при регистрации:', err.message);
         res.status(500).json({ error: err.message});
     }
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Сервер запущен ${PORT}`);
 });

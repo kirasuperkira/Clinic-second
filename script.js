@@ -1,237 +1,3 @@
-// document.addEventListener('DOMContentLoaded', function (){
-//     const carousel = document.getElementById('carouselExampleIndicators');
-//     const slides = carousel.querySelectorAll('.carousel-item');
-//     const indicators = carousel.querySelectorAll('.carousel-indicators button');
-
-//     let currentIndex = 0;
-//     const intervalTime = 2000;
-    
-//     function activeSlide(index){
-//         slides.forEach((slide, i) => {
-//             slide.classList.remove('active');
-//             indicators[i].classList.remove('active');
-//         });
-
-//         slides[index].classList.add('active');
-//         indicators[index].classList.add('active');
-//     }
-
-//     function autoSlide(){
-//         currentIndex = (currentIndex + 1) % slides.length;
-//         activeSlide(currentIndex);
-//     }
-
-//     let slideInterval = setInterval(autoSlide, intervalTime);
-
-//     carousel.addEventListener('mouseenter', function (){
-//         clearInterval(slideInterval);
-//     });
-
-//     carousel.addEventListener('mouseleave', function (){
-//         slideInterval = setInterval(autoSlide, intervalTime);
-//     });
-
-//     carousel.addEventListener('slides.bs.carousel', function (event){
-//         currentIndex = event.to;
-//     });
-// })
-
-// document.addEventListener('DOMContentLoaded', function (){
-//     const loginForm = document.getElementById('loginForm');
-//     const notification = document.getElementById('loginNotification');
-
-//     function showNotification(message, type = 'success'){
-//         notification.innerText = message;
-//         notification.className = `alert alert-${type} mb-3`;
-//         notification.classList.remove('d-none');
-
-//         setTimeout(() => {
-//             notification.classList.add('d-none');
-//         }, 3000);
-//     };
-
-//     loginForm.addEventListener('submit', function(event){
-//         event.preventDefault();
-
-//         const email = document.getElementById('loginEmail').value.trim();
-//         const password = document.getElementById('loginPassword').value.trim();
-
-//         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//         if (!emailPattern.test(email)){
-//             showNotification('Введите корректный Email.', 'danger');
-//             return;
-//         }
-//         if (password.length < 8){
-//             showNotification('Пароль должен содержать минимум 8 символов', 'danger');
-//             return;
-//         }
-
-//         showNotification('Вы успешно вошли.', 'success');
-
-//         loginForm.reset();
-//     });
-// });
-
-// document.addEventListener('DOMContentLoaded', function (){
-//     const loginForm = document.getElementById('registrationForm');
-//     const notification = document.getElementById('notification');
-
-
-//     function showNotification(message, type = 'success'){
-//         notification.innerText = message;
-//         notification.className = `alert alert-${type} mb-3`;
-//         notification.classList.remove('d-none');
-
-//         setTimeout(() => {
-//             notification.classList.add('d-none');
-//         }, 3000);
-//     };
-
-//     loginForm.addEventListener('submit', function(event){
-//         event.preventDefault();
-
-//         const text = document.getElementById('name').value.trim();
-//         const tel = document.getElementById('phone').value.trim();
-//         const email = document.getElementById('email').value.trim();
-//         const password = document.getElementById('password').value.trim();
-
-//         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//         if (text == null){
-//             showNotification('Введите имя', 'danger');
-//             return;
-//         }
-//         if (tel == null){
-//             showNotification('Введите телефон', 'danger');
-//             return;
-//         }
-//         if (!emailPattern.test(email)){
-//             showNotification('Введите корректный Email.', 'danger');
-//             return;
-//         }
-//         if (password.length < 8){
-//             showNotification('Введите корректный пароль', 'danger');
-//             return;
-//         }
-
-//         showNotification('Вы успешно зарегистрировались.', 'success');
-
-//         loginForm.reset();
-//     });
-// });
-
-// document.addEventListener('DOMContentLoaded', function (){
-//     const loginForm = document.getElementById('appointmentForm');
-//     const notification = document.getElementById('appointmentNotification');
-
-
-//     function showNotification(message, type = 'success'){
-//         notification.innerText = message;
-//         notification.className = `alert alert-${type} mb-3`;
-//         notification.classList.remove('d-none');
-
-//         setTimeout(() => {
-//             notification.classList.add('d-none');
-//         }, 3000);
-//     };
-
-//     loginForm.addEventListener('submit', function(event){
-//         event.preventDefault();
-
-//         const text = document.getElementById('appointmentName').value.trim();
-//         const tel = document.getElementById('appointmentPhone').value.trim();
-//         const doc = document.getElementById('appointmentDoctor').value.trim();
-//         const vec = document.getElementById('appointmentService').value.trim();
-//         const date = document.getElementById('appointmentDate').value.trim();
-
-//         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//         if (text == null){
-//             showNotification('Введите имя', 'danger');
-//             return;
-//         }
-//         if (tel == null){
-//             showNotification('Введите телефон', 'danger');
-//             return;
-//         }
-//         if (doc == null){
-//             showNotification('Выберите врача.', 'danger');
-//             return;
-//         }
-//         if (vec == null){
-//             showNotification('Выберите направление.', 'danger');
-//             return;
-//         }
-//         if (date == null){
-//             showNotification('Выберите дату.', 'danger');
-//             return;
-//         }
-
-//         showNotification('Вы успешно записались на прием.', 'success');
-
-//         loginForm.reset();
-//     });
-// });
-
-// document.addEventListener('DOMContentLoaded', function (){
-//     const toggleBtn = document.getElementById('toggle-theme');
-//     const body = document.body;
-
-//     const savedTheme = localStorage.getItem('theme');
-//     if (savedTheme) {
-//         body.classList.add(savedTheme + '-theme');
-//         toggleBtn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
-//     }
-//     else {
-//         body.classList.add('light-theme');
-//         toggleBtn.innerText = '🌙';
-//     }
-
-//     if (toggleBtn) {
-//         toggleBtn.addEventListener('click', () => {
-//             const isDark = body.classList.toggle('dark-theme');
-//             body.classList.toggle('light-theme');
-//             const theme = isDark ? 'dark' : 'light';
-
-//             localStorage.setItem('theme', theme);
-//             toggleBtn.innerText = isDark ? '☀️' : '🌙';
-//         });
-//     }
-// });
-
-// document.getElementById('registrationForm').addEventListener('submit', async (e) => {
-//     e.preventDefault();
-
-//     const name = document.getElementById('name').value;
-//     const phone = document.getElementById('phone').value;
-//     const email = document.getElementById('email').value;
-//     const password = document.getElementById('password').value;
-
-//     // try {
-//     //     const responce = await fetch('http://localhost:3000/api/register', {
-//     //         method: 'POST',
-//     //         headers: {
-//     //             'Content-Type': 'application/json',
-//     //         },
-//     //         body: JSON.stringify( { name, phone, email, password }),
-//     //     });
-
-//     //     const result = await response.json();
-
-//     //     const notification = document.getElementById('notofocation');
-//     //     if (response.ok) {
-//     //         notification.className = 'alert alert-success d-block mb-3';
-//     //         notification.textContent = result.message;
-//     //     } else {
-//     //         notification.className = 'alert alert-danger d-block mb-3';
-//     //         notification.textContent = result.error || 'Ошибка регистрации.';
-//     //     }
-//     // } catch (error) {
-//     //     console.error('Ошибка:', error);
-//     //     console.log('Отправляемые данные:', { name, phone, email, password });
-//     //     alert('Произошла ошибка при отправке данных.');
-//     // }
-// });
-
-// Валидация регистрации
 document.addEventListener('DOMContentLoaded', function () {
     const registrationForm = document.getElementById('registrationForm');
     const notification = document.getElementById('notification');
@@ -282,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Валидация записи на приём
+
 document.addEventListener('DOMContentLoaded', function () {
     const appointmentForm = document.getElementById('appointmentForm');
     const notification = document.getElementById('appointmentNotification');
@@ -336,10 +102,9 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Проверка даты через JavaScript
         const selectedDate = new Date(date);
         const todayDate = new Date();
-        todayDate.setHours(0, 0, 0, 0); // Обнуляем время для сравнения только дат
+        todayDate.setHours(0, 0, 0, 0);
 
         if (selectedDate < todayDate) {
             showNotification('Пожалуйста, выберите сегодняшнюю или будущую дату.', 'danger');
@@ -353,7 +118,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Валидация входа
 document.addEventListener('DOMContentLoaded', function () {
     const loginForm = document.getElementById('loginForm');
     const notification = document.getElementById('loginNotification');
@@ -391,7 +155,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Анимация карусели
 document.addEventListener('DOMContentLoaded', function () {
     const carousel = document.getElementById('carouselExampleIndicators');
     const slides = carousel.querySelectorAll('.carousel-item');
@@ -430,9 +193,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Модальное окно подробностей
 document.addEventListener('DOMContentLoaded', function () {
-    const serviceModal = new bootstrap.Modal(document.getElementById('serviceModal')); //Создание модального окна
+    const serviceModal = new bootstrap.Modal(document.getElementById('serviceModal'));
     const serviceImage = document.getElementById('serviceImage');
     const serviceTableBody = document.getElementById('serviceTableBody');
 
@@ -470,8 +232,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-
-
 document.addEventListener('DOMContentLoaded', function () {
     const toggleBtn = document.getElementById('toggle-theme');
     const body = document.body;
@@ -498,7 +258,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-//Отправка формы регистрации в БД
 document.getElementById('registrationForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -507,61 +266,59 @@ document.getElementById('registrationForm').addEventListener('submit', async (e)
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    // try {
-    //     const response = await fetch('http://localhost:3000/api/register', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({ name, phone, email, password }),
-    //     });
+    try {
+        const response = await fetch('http://localhost:3000/api/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name, phone, email, password }),
+        });
 
-    //     const result = await response.json(); //мы разрешаем доступ к JSON-формат
+        const result = await response.json();
 
-    //     const notification = document.getElementById('notification');
-    //     if (response.ok) {
-    //         notification.className = 'alert alert-success d-block mb-3';
-    //         notification.textContent = result.message;
-    //     } else {
-    //         notification.className = 'alert alert-danger d-block mb-3';
-    //         notification.textContent = result.error || 'Ошибка регистрации.';
-    //     }
-    // } catch (error) {
-    //     console.error('Ошибка:', error);
-    //     console.log('Отправляемые данные:', { name, phone, email, password });
-    //     alert('Произошла ошибка при отправке данных.');
-    // }
+        const notification = document.getElementById('notification');
+        if (response.ok) {
+            notification.className = 'alert alert-success d-block mb-3';
+            notification.textContent = result.message;
+        } else {
+            notification.className = 'alert alert-danger d-block mb-3';
+            notification.textContent = result.error || 'Ошибка регистрации.';
+        }
+    } catch (error) {
+        console.error('Ошибка:', error);
+        console.log('Отправляемые данные:', { name, phone, email, password });
+        alert('Произошла ошибка при отправке данных.');
+    }
 });
 
-
-//Авторизация данных с сервера
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
 
-    // try {
-    //     const response = await fetch('http://localhost:3000/api/login', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({ email, password }),
-    //     });
+    try {
+        const response = await fetch('http://localhost:3000/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+        });
 
-    //     const result = await response.json();
+        const result = await response.json();
 
-    //     const notification = document.getElementById('loginNotification');
-    //     if (response.ok) {
-    //         notification.className = 'alert alert-success d-block mb-3';
-    //         notification.textContent = result.message;
-    //     } else {
-    //         notification.className = 'alert alert-danger d-block mb-3';
-    //         notification.textContent = result.error || 'Ошибка входа.';
-    //     }
-    // } catch (error) {
-    //     console.error('Ошибка:', error);
-    //     alert('Произошла ошибка при отправке данных.');
-    // }
+        const notification = document.getElementById('loginNotification');
+        if (response.ok) {
+            notification.className = 'alert alert-success d-block mb-3';
+            notification.textContent = result.message;
+        } else {
+            notification.className = 'alert alert-danger d-block mb-3';
+            notification.textContent = result.error || 'Ошибка входа.';
+        }
+    } catch (error) {
+        console.error('Ошибка:', error);
+        alert('Произошла ошибка при отправке данных.');
+    }
 });
